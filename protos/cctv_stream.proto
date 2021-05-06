@@ -10,4 +10,7 @@ message Request {}
 
 message Response {
   string data = 1;
+  int32 width = 2;
+  int32 high = 3;
+  int32 ch = 4;
 }
