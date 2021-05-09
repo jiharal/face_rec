@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x63\x63tv_stream.proto\x12\x0b\x63\x63tv_stream\"\t\n\x07Request\"A\n\x08Response\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\r\n\x05width\x18\x02 \x01(\x05\x12\x0c\n\x04high\x18\x03 \x01(\x05\x12\n\n\x02\x63h\x18\x04 \x01(\x05\x32H\n\nCCTVStream\x12:\n\tSendFrame\x12\x14.cctv_stream.Request\x1a\x15.cctv_stream.Response\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11\x63\x63tv_stream.proto\x12\x0b\x63\x63tv_stream\"\t\n\x07Request\"A\n\x08Response\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\r\n\x05width\x18\x02 \x01(\x05\x12\x0c\n\x04high\x18\x03 \x01(\x05\x12\n\n\x02\x63h\x18\x04 \x01(\x05\x32\x8c\x01\n\nCCTVStream\x12:\n\tSendFrame\x12\x14.cctv_stream.Request\x1a\x15.cctv_stream.Response\"\x00\x12\x42\n\x0fSendFrameStream\x12\x14.cctv_stream.Request\x1a\x15.cctv_stream.Response\"\x00\x30\x01\x62\x06proto3'
 )
 
 
@@ -129,13 +129,23 @@ _CCTVSTREAM = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=112,
-  serialized_end=184,
+  serialized_start=113,
+  serialized_end=253,
   methods=[
   _descriptor.MethodDescriptor(
     name='SendFrame',
     full_name='cctv_stream.CCTVStream.SendFrame',
     index=0,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SendFrameStream',
+    full_name='cctv_stream.CCTVStream.SendFrameStream',
+    index=1,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_RESPONSE,

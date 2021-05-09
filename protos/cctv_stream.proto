@@ -4,6 +4,7 @@ package cctv_stream;
 
 service CCTVStream {
   rpc SendFrame(Request) returns (Response) {}
+  rpc SendFrameStream(Request) returns (stream Response){}
 }
 
 message Request {}

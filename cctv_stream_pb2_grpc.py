@@ -19,6 +19,11 @@ class CCTVStreamStub(object):
                 request_serializer=cctv__stream__pb2.Request.SerializeToString,
                 response_deserializer=cctv__stream__pb2.Response.FromString,
                 )
+        self.SendFrameStream = channel.unary_stream(
+                '/cctv_stream.CCTVStream/SendFrameStream',
+                request_serializer=cctv__stream__pb2.Request.SerializeToString,
+                response_deserializer=cctv__stream__pb2.Response.FromString,
+                )
 
 
 class CCTVStreamServicer(object):
@@ -30,11 +35,22 @@ class CCTVStreamServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SendFrameStream(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CCTVStreamServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SendFrame': grpc.unary_unary_rpc_method_handler(
                     servicer.SendFrame,
+                    request_deserializer=cctv__stream__pb2.Request.FromString,
+                    response_serializer=cctv__stream__pb2.Response.SerializeToString,
+            ),
+            'SendFrameStream': grpc.unary_stream_rpc_method_handler(
+                    servicer.SendFrameStream,
                     request_deserializer=cctv__stream__pb2.Request.FromString,
                     response_serializer=cctv__stream__pb2.Response.SerializeToString,
             ),
@@ -60,6 +76,23 @@ class CCTVStream(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/cctv_stream.CCTVStream/SendFrame',
+            cctv__stream__pb2.Request.SerializeToString,
+            cctv__stream__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SendFrameStream(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/cctv_stream.CCTVStream/SendFrameStream',
             cctv__stream__pb2.Request.SerializeToString,
             cctv__stream__pb2.Response.FromString,
             options, channel_credentials,
